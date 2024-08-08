@@ -1,0 +1,10 @@
+1 DIM x
+2 LET x = 222
+5 PRINT
+10 PRINT x
+20 PRINT x,
+30 PRINT x, 10
+30 PRINT x; 10
+40 PRINT x 10
+40 PRINT "FOOo", 10
+40 PRINT "X is " x "; 5+5 is " 5 + 5

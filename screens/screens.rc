@@ -1,0 +1,5 @@
+#include "screens.h"
+
+ID_APP_ICON ICON "little.ico"
+ID_TRAY_APP_ICON1 ICON "enable.ico"
+ID_TRAY_APP_ICON2 ICON "disable.ico"

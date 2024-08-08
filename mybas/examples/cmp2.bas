@@ -1,0 +1,6 @@
+4 DIM A, X, Y
+10 GOSUB 60
+20 END
+60 LET X = A ^ 2
+61 LET Y = X ^ 2
+62 RETURN

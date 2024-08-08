@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Documentation</title>
+<style><!--
+th{color:#384877;border:1px solid #6676A8;border-bottom:2px solid #6676A8;}
+a.toc-2::before{content: counter(toc2) "  ";counter-increment: toc2;}
+a.toc-4::before{content: counter(toc2) "." counter(toc3) "." counter(toc4) "  ";counter-increment: toc4;}
+th,td{padding:0.5em 0.75em;border:1px solid #738FD0;}
+abbr{cursor:help;}
+ol.footnotes{font-size:small;color:#738FD0}
+tr:nth-child(odd){background-color:#FBFCFF;}
+a.header svg{opacity:0;}
+a.toc-3::before{content: counter(toc2) "." counter(toc3) "  ";counter-increment: toc3;}
+summary{cursor:pointer;}
+a.normal, a.toc{color:#384877;}
+h1{border-bottom:1px solid #314070;padding:0.3em 0.1em;counter-reset: h2 h3 h4;}
+h2{color:#384877;border-bottom:1px solid #384877;padding:0.2em 0.1em;counter-reset: h3 h4;}
+h3{color:#6676A8;border-bottom:1px solid #6676A8;padding:0.1em 0.1em;counter-reset: h4;}
+h4{border-bottom:1px solid #738FD0}
+a.top{font-size:x-small;text-decoration:initial;float:right;}
+ul.toc{list-style-type:none;}
+h4,h5,h6{padding:0.1em 0.1em;}
+strong,b{color:#314070}
+div{padding:0.5em;}
+a.normal:hover, a.toc:hover{color:#738FD0;}
+h1 a{color:#314070;}
+dd{padding:0.3em;}
+h4 a,h5 a,h6 a{color:#738FD0;}
+a.toc-button{color:#384877;cursor:pointer;font-size:small;padding: 0.3em 0.5em 0.5em 0.5em;font-family:monospace;border-radius:3px;}
+li.toc-1{counter-reset: toc2 toc3 toc4;}
+li.toc-2{counter-reset: toc3 toc4;}
+.highlight{color:#384877;background-color:#FBFCFF;}
+li.toc-3{counter-reset: toc4;}
+dl{margin:0.5em;}
+code{color:#384877;font-weight:bold;}
+pre{color:#384877;background:#FBFCFF;border:1px solid;border-radius:2px;line-height:1.25em;margin:0.25em 0.5em;padding:0.75em;overflow-x:auto;}
+dt{font-weight:bold;}
+del,s{color:#738FD0;}
+table{border-collapse:collapse;margin:0.5em;}
+div#table-of-contents{padding:0;font-size:smaller;}
+caption{padding:0.5em;font-style:italic;}
+h2 a{color:#384877;}
+hr{background:#314070;height:1px;border:0;}
+mark{color:#FBFCFF;background-color:#738FD0;}
+h4::before{content: counter(h2) "."counter(h3)"."counter(h4) " ";counter-increment: h4; margin-right: 10px;}
+h3 a{color:#6676A8;}
+a.toc-button:hover{color:#738FD0;background:#FBFCFF;}
+a.footnote-back{text-decoration:initial;font-size:x-small;}
+a.header{text-decoration: none;}
+p{margin:0.5em 0.1em;}
+blockquote{margin-left:1em;color:#384877;border-left:0.2em solid #6676A8;padding:0.25em 0.5em;overflow-x:auto;}
+body{color:#314070;font-family:sans-serif;font-size:11pt;line-height:1.5em;padding:1em 2em;width:80%;max-width:1080px;margin:0 auto;min-height:100%;float:none;}
+h1,h2,h3,h4,h5,h6{font-weight:bolder;line-height:1.2em;}
+h3::before{content: counter(h2) "."counter(h3) " ";counter-increment: h3; margin-right: 10px;}
+h2::before{content: counter(h2) " ";counter-increment: h2; margin-right: 10px;}
+a.header:hover svg{opacity:1;}
+.fade{color:#FBFCFF;}
+a.footnote{font-size:smaller;text-decoration:initial;}
+--></style>
+</head><body>
+<p>This is a modified version of <a class="normal" href="http://oldblog.antirez.com/post/picol.html" title="">Picol</a>,
+ Salvatore Sanfilippo ("antirez")'s Tcl interpreter in ~500 lines.</p>
+<p>This version turns it into a <a class="normal" href="https://github.com/nothings/stb/blob/master/docs/stb_howto.txt" title="">STB</a>-style single header library, so
+ that it can be embedded into another program as a command interpreter.</p>
+<p>To use it, add a <code>#define PICOL_IMPLEMENTATION</code> above the
+ <code>#include "picol.h"</code> in <em>one</em> of your source files.</p>
+<pre><code> #define PICOL_IMPLEMENTATION
+ #include "picol.h"</code>
+</pre>
+<p>Now you can call <code>picolInitInterp()</code> to initialize an interpreter stucture
+ (of type <code>struct picolInterp</code>), call <code>picolRegisterCoreCommands()</code> to register
+ the core commands in the language, call <code>picolRegisterCommand()</code> to add custom
+ commands to the interpreter, and then call <code>picolEval()</code> to interpret a string
+ of text.</p>
+<pre><code> struct picolInterp interp;
+ picolInitInterp(&amp;interp);
+ picolRegisterCoreCommands(&amp;interp);
+ int retcode = picolEval(&amp;interp, text);</code>
+</pre>
+<p>Inside custom commands, you can use <code>picolArityErr()</code> when checking the number of
+ paramters passed, and <code>picolSetResult()</code> to set the value that will be returned
+ by the command.</p>
+<p>I've kept the original REPL. It can be accessed by compiling this
+ file with the <code>PICOL_REPL</code> symbol defined</p>
+<pre><code> $ cp picol.h picol.h.c
+ $ gcc -DPICOL_REPL picol.h.c</code>
+</pre>
+</body></html>
