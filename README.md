@@ -65,6 +65,15 @@ into another program as a command interpreter.
 [Picol]: http://oldblog.antirez.com/post/picol.html
 [STB]: https://github.com/nothings/stb/blob/master/docs/stb_howto.txt
 
+### editor
+
+Reference implementation for Sean Barret's [stb_tilemap_editor.h][]
+to create a simple level editor for 2D games.
+
+It uses ZSerge's [fenster][] framework for displaying the user interface.
+
+[stb_tilemap_editor.h]: https://github.com/nothings/stb/blob/master/stb_tilemap_editor.h
+
 ### sbasic
 
 A tiny BASIC interpreter from Chapter 7 of "C Power User's Guide" by Herbert Schildt, 1988.

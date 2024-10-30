@@ -1,0 +1,10 @@
+row,column,layers,category
+0,0,0xFF,walls
+0,1,0xFF,walls
+0,2,0xFF,walls
+0,3,0xFF,walls
+1,0,0xFF,walls
+1,1,0xFF,walls
+2,0,0xFF,floor
+2,1,0xFF,upper
+2,2,0xFF,floor
