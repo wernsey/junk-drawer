@@ -74,6 +74,14 @@ It uses ZSerge's [fenster][] framework for displaying the user interface.
 
 [stb_tilemap_editor.h]: https://github.com/nothings/stb/blob/master/stb_tilemap_editor.h
 
+### fenster-microui
+
+An interface between ZSerge's [fenster][] framework and RXI's [microui][]
+immediate mode GUI toolkit for quick cross-platform GUI programs.
+
+[fenster]: https://github.com/zserge/fenster
+[microui]: https://github.com/rxi/microui
+
 ### sbasic
 
 A tiny BASIC interpreter from Chapter 7 of "C Power User's Guide" by Herbert Schildt, 1988.
