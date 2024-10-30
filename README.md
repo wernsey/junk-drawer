@@ -82,6 +82,21 @@ immediate mode GUI toolkit for quick cross-platform GUI programs.
 [fenster]: https://github.com/zserge/fenster
 [microui]: https://github.com/rxi/microui
 
+### fenster-pocketmod
+
+A demo for using `fenster_audio.h` from ZSerge's [fenster][] framework to play 
+module (MOD) music files through the [rombankzero/pocketmod][] library.
+
+To play the music, drop the contents of the original
+[pocketmod/songs](https://github.com/rombankzero/pocketmod/tree/master/songs)
+directory into `fenster-pocketmod/songs`.
+
+The irony that there's another unrelated tool called **pocketmod** 
+that has nothing to do with MOD music in this collection is not
+lost on me.
+
+[rombankzero/pocketmod]: https://github.com/rombankzero/pocketmod
+
 ### sbasic
 
 A tiny BASIC interpreter from Chapter 7 of "C Power User's Guide" by Herbert Schildt, 1988.
