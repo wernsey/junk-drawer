@@ -31,7 +31,8 @@ http://bobobobo.wordpress.com/2009/03/30/adding-an-icon-system-tray-win32-c/
 #define stringcopy strcpy
 #endif
 
-#include "bmp.h"
+#define BMPH_IMPLEMENTATION
+#include "bmph.h"
 #include "screens.h"
 
 #define ID_TRAY_EXIT_CONTEXT_MENU_ITEM  	3000

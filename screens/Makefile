@@ -1,4 +1,4 @@
-CFLAGS= -DNO_FONTS -c
+CFLAGS= -DNO_FONTS -c -I../common
 LFLAGS= -mwindows -lwtsapi32
 
 ifeq ($(BUILD),debug)
@@ -13,7 +13,7 @@ endif
 
 all: screens
 
-SOURCES= screens.c bmp.c
+SOURCES= screens.c
 
 OBJECTS=$(SOURCES:.c=.o)
 
@@ -23,8 +23,7 @@ screens : $(OBJECTS) screens.res
 screens.res : screens.rc little.ico enable.ico disable.ico
 	windres $< -O coff -o $@
 
-screens.o : screens.c bmp.h screens.h
-bmp.o : bmp.c bmp.h
+screens.o : screens.c screens.h
 
 clean:
 	-rm -rf screens.exe xtract.exe

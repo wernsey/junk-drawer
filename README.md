@@ -119,3 +119,9 @@ This version has been modified and modified and modified to add several features
  - Escape sequences in string literals
 
  _You might notice a theme with all the interpreters in this collection._
+
+### domsson
+
+Converts OpenGameArt user [domsson][]'s bitmap fonts to byte arrays.
+
+[domsson]: https://opengameart.org/users/domsson
