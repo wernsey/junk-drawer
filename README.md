@@ -50,6 +50,25 @@ The Windows version is built with MinGW and [pdcurses][]
 
 A simple BASIC-to-C _compiler_.
 
+## map
+
+A dungeon generator for a Roguelike.
+
+It is based on the "Rogue" algorithm, as described by Mark Damon Hughes
+[Game Design: Article 07: Roguelike Dungeon Generation][dungeon], but with
+some modifications to allow for locked doors (with the key placed sensibly)
+and secret rooms.
+
+The example program in [main.c](map/main.c) generates a SVG of the dungeon
+level inspired by [watabou's One Page Dungeon][watabou]. It also uses the
+same [Dyson Logos][dysonlogos]-style cross hatching based around poisson disc
+sampling as described in [this devlog][hatching].
+
+[dungeon]: https://web.archive.org/web/20131025132021/http://kuoi.org/~kamikaze/GameDesign/art07_rogue_dungeon.php
+[watabou]: https://watabou.itch.io/one-page-dungeon
+[hatching]: https://www.patreon.com/posts/hatching-in-1pdg-31716880
+[dysonlogos]: https://dysonlogos.blog/2013/12/23/the-key-to-all-this-madness/
+
 ## Other people's code
 
 Some code written by other people that I have adapted for my own purposes:
@@ -72,6 +91,8 @@ to create a simple level editor for 2D games.
 
 It uses ZSerge's [fenster][] framework for displaying the user interface.
 
+You might see theme here with all the level editors and map/maze generators.
+
 [stb_tilemap_editor.h]: https://github.com/nothings/stb/blob/master/stb_tilemap_editor.h
 
 ### fenster-microui
@@ -84,14 +105,14 @@ immediate mode GUI toolkit for quick cross-platform GUI programs.
 
 ### fenster-pocketmod
 
-A demo for using `fenster_audio.h` from ZSerge's [fenster][] framework to play 
+A demo for using `fenster_audio.h` from ZSerge's [fenster][] framework to play
 module (MOD) music files through the [rombankzero/pocketmod][] library.
 
 To play the music, drop the contents of the original
 [pocketmod/songs](https://github.com/rombankzero/pocketmod/tree/master/songs)
 directory into `fenster-pocketmod/songs`.
 
-The irony that there's another unrelated tool called **pocketmod** 
+The irony that there's another unrelated tool called **pocketmod**
 that has nothing to do with MOD music in this collection is not
 lost on me.
 
