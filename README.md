@@ -46,6 +46,27 @@ The Windows version is built with MinGW and [pdcurses][]
 [curses]: https://en.wikipedia.org/wiki/Curses_(programming_library)
 [pdcurses]: https://pdcurses.org/
 
+## new-project.shar
+
+A shell script (technically a shell _archive_) to create a new C (or C++)
+project. If you run it in an empty directory, it will create some directories
+for your source, a basic `Makefile`, a `README.md`, a blank `LICENSE` and a
+`.gitignore` file.
+
+To get started, run these commands (assuming you want your project placed in
+a directory called `project`):
+
+```
+mkdir project && cd project
+sh ~/junk-drawer/new-project.shar
+make
+```
+
+See the `README.md` inside the new directory for more details.
+
+Note to self: the shar was created with the `-TV` options, as in
+`shar -TV * > ~/junk-drawer/new-project.shar` if you want to recreate it
+
 ## mybas
 
 A simple BASIC-to-C _compiler_.

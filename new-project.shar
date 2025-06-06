@@ -1,0 +1,295 @@
+#!/bin/sh
+# This is a shell archive (produced by GNU sharutils 4.15.2).
+# To extract the files from this archive, save it to some FILE, remove
+# everything before the '#!/bin/sh' line above, then type 'sh FILE'.
+#
+lock_dir=_sh00560
+# Made on 2025-06-05 13:59 SAST by <werner@LAPTOP-1GNSN4EL>.
+# Source directory was '/home/werner/new-project'.
+#
+# Existing files will *not* be overwritten, unless '-c' is specified.
+#
+# This shar contains:
+# length mode       name
+# ------ ---------- ------------------------------------------
+#     97 -rw-rw-rw- LICENSE
+#   1172 -rw-rw-rw- Makefile
+#   1222 -rw-rw-rw- README.md
+#    151 -rw-rw-rw- deps.d
+#     60 -rw-rw-rw- include/foo.h
+#     51 -rw-rw-rw- src/foo.c
+#    122 -rw-rw-rw- src/main.c
+#
+if test "X$1" = "X-c"
+then keep_file=''
+else keep_file=true
+fi
+echo=echo
+shar_tty=
+shar_n=
+shar_c='\n'
+if test ! -d ${lock_dir} ; then :
+else ${echo} "lock directory ${lock_dir} exists"
+     exit 1
+fi
+if mkdir ${lock_dir} ; then :
+else ${echo} "failed to create ${lock_dir} lock directory"
+     exit 1
+fi
+# ============= LICENSE ==============
+if test -n "${keep_file}" && test -f 'LICENSE'
+then
+${echo} "x - SKIPPING LICENSE (file already exists)"
+
+else
+${echo} "x - extracting LICENSE (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'LICENSE' &&
+XTODO: Choose a license for your project.
+X
+XYou can go here for ideas: https://choosealicense.com/
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of LICENSE failed"
+fi
+fi
+# ============= Makefile ==============
+if test -n "${keep_file}" && test -f 'Makefile'
+then
+${echo} "x - SKIPPING Makefile (file already exists)"
+
+else
+${echo} "x - extracting Makefile (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'Makefile' &&
+XEXECUTABLE = main
+X
+XSRC_DIR := src
+XOBJ_DIR := obj
+X
+XINCLUDE_PATHS = -I ./include
+XCFLAGS = -Wall $(INCLUDE_PATHS)
+XLDFLAGS =
+X
+Xifeq ($(BUILD),debug)
+X# Debug
+XCFLAGS += -O0 -g
+XLDFLAGS +=
+Xelse
+X# Release mode
+XCFLAGS += -O2 -DNDEBUG
+XLDFLAGS += -s
+Xendif
+X
+Xifeq ($(OS),Windows_NT)
+X	# Windows specific flags
+X	EXECUTABLE := $(EXECUTABLE).exe
+X	CFLAGS +=
+X	LDFLAGS += -mwindows
+Xelse
+X	UNAME_S := $(shell uname -s)
+X	ifeq ($(UNAME_S),Darwin)
+X		# MacOS flags
+X		CFLAGS +=
+X		LDFLAGS +=
+X	else
+X		# Linux/other
+X		CFLAGS +=
+X		LDFLAGS +=
+X	endif
+Xendif
+X
+X.SILENT:
+X
+XSRC := $(wildcard $(SRC_DIR)/*.c)
+XOBJ=$(SRC:$(SRC_DIR)/%.c=$(OBJ_DIR)/%.o)
+X
+Xall: $(EXECUTABLE)
+X
+Xdebug:
+X	$(MAKE) BUILD=debug
+X
+X$(EXECUTABLE): $(OBJ)
+X	echo $@
+X	$(CC) -o $@ $(OBJ) $(LDFLAGS)
+X
+X$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c | $(OBJ_DIR)
+X	echo $@
+X	$(CC) $(CFLAGS) -c $< -o $@
+X
+X$(OBJ_DIR):
+X	echo $@
+X	mkdir -p $@
+X
+X# use `make deps` to refresh these dependencies:
+X
+X-include deps.d
+X
+X.PHONY : clean deps
+X
+Xdeps:
+X	echo '# auto-generated: use `make deps` to refresh these dependencies:' > deps.d
+X	$(CC) -MM $(INCLUDE_PATHS) $(SRC) | \
+X		sed 's/\(.*\.o:\)/$$(OBJ_DIR)\/\1/g;s/[a-z]*\/\.\.\///g' >> deps.d
+X
+Xclean:
+X	-rm -f $(EXECUTABLE)
+X	-rm -rf $(OBJ_DIR)
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of Makefile failed"
+fi
+fi
+# ============= README.md ==============
+if test -n "${keep_file}" && test -f 'README.md'
+then
+${echo} "x - SKIPPING README.md (file already exists)"
+
+else
+${echo} "x - extracting README.md (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'README.md' &&
+XNew Project
+X===========
+X
+XThis is a C project template.
+X
+X* Put your source code in the `src/` directory
+X* Put your header files in the `include/` directory
+X* Run `make deps` to rebuild [deps.d](deps.d) which contain
+X* Place your license in [LICENSE](LICENSE)
+X* Replace the contents of [this file](README) with your documentation
+X
+XMakefile
+X--------
+X
+XThe [Makefile](Makefile) is set up to compile any C source files in the `src/` directory.
+X
+XThe generated object files will be placed in a directory called `obj/`
+X
+XIt will generate an executable called `main`.
+X
+XYou can change all these settings at the top of the Makefile.
+X
+XThe default is to build a release build of the program with optimizations enabled,
+Xassertions disabled (through `NDEBUG`) and debug symbols stripped.
+X
+XAlternatively, you can use the `debug` target to build a debug version of the executable
+Xwith debug symbols added, assertions enabled and optimizations disabled.
+X
+XThe Makefile can also detect whether it is building in Windows (through MinGW), MacOS
+Xor Linux, so there's opportunity to add platform specific compiler flags
+X
+XThe file `deps.d` contains the dependencies of the source files for the Makefile.
+XIt can be regenerated with the `deps` target
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of README.md failed"
+fi
+fi
+# ============= deps.d ==============
+if test -n "${keep_file}" && test -f 'deps.d'
+then
+${echo} "x - SKIPPING deps.d (file already exists)"
+
+else
+${echo} "x - extracting deps.d (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'deps.d' &&
+X# auto-generated: use `make deps` to refresh these dependencies:
+X$(OBJ_DIR)/foo.o: src/foo.c include/foo.h
+X$(OBJ_DIR)/main.o: src/main.c include/foo.h
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of deps.d failed"
+fi
+fi
+# ============= include/foo.h ==============
+if test ! -d 'include'; then
+  mkdir 'include'
+if test $? -eq 0
+then ${echo} "x - created directory include."
+else ${echo} "x - failed to create directory include."
+     exit 1
+fi
+fi
+if test -n "${keep_file}" && test -f 'include/foo.h'
+then
+${echo} "x - SKIPPING include/foo.h (file already exists)"
+
+else
+${echo} "x - extracting include/foo.h (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'include/foo.h' &&
+X#ifndef FOO_H
+X#define FOO_H
+X
+Xextern const char *foo;
+X
+X#endif
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of include/foo.h failed"
+fi
+fi
+# ============= src/foo.c ==============
+if test ! -d 'src'; then
+  mkdir 'src'
+if test $? -eq 0
+then ${echo} "x - created directory src."
+else ${echo} "x - failed to create directory src."
+     exit 1
+fi
+fi
+if test -n "${keep_file}" && test -f 'src/foo.c'
+then
+${echo} "x - SKIPPING src/foo.c (file already exists)"
+
+else
+${echo} "x - extracting src/foo.c (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'src/foo.c' &&
+X#include "foo.h"
+X
+Xconst char *foo = "This is foo";
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of src/foo.c failed"
+fi
+fi
+# ============= src/main.c ==============
+if test ! -d 'src'; then
+  mkdir 'src'
+if test $? -eq 0
+then ${echo} "x - created directory src."
+else ${echo} "x - failed to create directory src."
+     exit 1
+fi
+fi
+if test -n "${keep_file}" && test -f 'src/main.c'
+then
+${echo} "x - SKIPPING src/main.c (file already exists)"
+
+else
+${echo} "x - extracting src/main.c (text)"
+  sed 's/^X//' << 'SHAR_EOF' > 'src/main.c' &&
+X#include <stdio.h>
+X
+X#include "foo.h"
+X
+Xint main(int argc, char *argv[]) {
+X    printf("Foo is '%s'\n", foo);
+X    return 0;
+X}
+SHAR_EOF
+:
+if test $? -ne 0
+then ${echo} "restore of src/main.c failed"
+fi
+fi
+if rm -fr ${lock_dir}
+then ${echo} "x - removed lock directory ${lock_dir}."
+else ${echo} "x - failed to remove lock directory ${lock_dir}."
+     exit 1
+fi
+exit 0
