@@ -7,6 +7,10 @@
  *
  * You might want to look at this link for alternative ideas:
  * <https://bost.ocks.org/mike/algorithms/>
+ *
+ * Author: Werner Stoop
+ * CC0 This work has been marked as dedicated to the public domain.
+ * https://creativecommons.org/publicdomain/zero/1.0/
  */
 #ifndef POISSON_H
 #define POISSON_H

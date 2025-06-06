@@ -167,3 +167,17 @@ This version has been modified and modified and modified to add several features
 Converts OpenGameArt user [domsson][]'s bitmap fonts to byte arrays.
 
 [domsson]: https://opengameart.org/users/domsson
+
+## snippets
+
+The snippets directory has some code that can be copied and pasted
+into projects as needed.
+
+Some of them from random places on the internet, some of them written
+by myself. I take care to only include files under permissive licenses
+
+* `getopt.c` and `getopt.h` for command-line parameter processing originally
+  posted on the `comp.sources.misc` newsgroup.
+* `rot13.c` - A [rot13][] encoder/decoder
+
+[rot13]: https://en.wikipedia.org/wiki/ROT13

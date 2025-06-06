@@ -1,3 +1,16 @@
+/*
+ * Generates a SVG of a dungeon generated in `dungeon.c` in the style of
+ * [dysonlogos][] using the Poisson disc-based [hatching][] technique
+ * that [watabou][] used in his dungeon generator.
+ *
+ * [watabou]: https://watabou.itch.io/one-page-dungeon
+ * [hatching]: https://www.patreon.com/posts/hatching-in-1pdg-31716880
+ * [dysonlogos]: https://dysonlogos.blog/2013/12/23/the-key-to-all-this-madness/
+ *
+ * Author: Werner Stoop
+ * CC0 This work has been marked as dedicated to the public domain.
+ * https://creativecommons.org/publicdomain/zero/1.0/
+ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <time.h>
@@ -102,7 +115,7 @@ static void drawSvg(D_Dungeon *M, FILE *f) {
 	fprintf(f, "  fill=\"#EEE\" stroke=\"none\"/>\n");
 	fprintf(f, " </symbol>\n\n");
 	fprintf(f, "\n");
-	
+
 	fprintf(f, " <symbol id=\"strokes\" width=\"4\" height=\"4\" viewBox=\"-2 -2 4 4\" x=\"-2\" y=\"-2\">\n");
 	fprintf(f, "  <path d=\"M-1.5,-1.5 C -1.75,-0.5 -1.25,0.5 -1.5,1.5 M0,-1.75 C -0.2,-0.5 0.2,0.5 0,1.5   M1.5,-1.5 C 1.75,-0.5 1.25,0.5 1.5,1.5\"\n");
 	fprintf(f, "  fill=\"none\" stroke=\"black\" stroke-width=\"0.25\" stroke-linecap=\"round\"/>\n");
@@ -163,8 +176,8 @@ static void drawSvg(D_Dungeon *M, FILE *f) {
 	fprintf(f, "   stroke=\"none\" fill=\"black\"/>\n");
 	fprintf(f, " </symbol>\n");
 	fprintf(f, "\n");
-	
-	
+
+
 	fprintf(f, " <symbol id=\"crack-t\" width=\"12\" height=\"12\" viewBox=\"-1 -1 12 12\">\n");
 	fprintf(f, "  <path d=\"M 4.19 0 C 2.91 1.02 2.79 0.98 2.2 1.49 C 3.22 1.93 3.67 2.25 4.48 2.83 C 4.1 3.17 2.56 3.98 2.6 4.1 C 3.51 6.25 4.04 7.15 4.13 7.04 C 3.84 5.84 3.42 4.98 3.19 4.17 C 4.13 3.65 4.85 3.12 5.26 2.9 C 4.84 2.37 4.35 1.85 3.71 1.36 C 3.87 1.15 5.49 0.46 6.19 0\" \n");
 	fprintf(f, "  fill=\"black\" stroke=\"none\"/>\n");
@@ -414,7 +427,7 @@ static void drawSvg(D_Dungeon *M, FILE *f) {
 				break;
 		}
 	}
-	
+
 	/* Random cracks */
 	for(i = 0; i < 3; i++) {
 		r = d_random_room(M);
@@ -454,12 +467,12 @@ static void drawSvg(D_Dungeon *M, FILE *f) {
 				break;
 		}
 	}
-	
+
 	/* Room with pillars */
 	do {
 		r = d_random_room(M);
 	} while(r->flags & (D_FLAG_START_ROOM | D_FLAG_END_ROOM | D_FLAG_GONE_ROOM) || (r->w * r->h < 8));
-	for(i = 1; i < r->w; i++) 
+	for(i = 1; i < r->w; i++)
 		for(j = 1; j < r->h; j++) {
 			fprintf(f, " <use href=\"#pillar\" transform=\"translate(%d %d) rotate(%d)\"/>\n", (r->x + i) * 10 + 1, (r->y + j) * 10 + 1, D_RAND(360));
 		}

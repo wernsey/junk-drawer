@@ -69,6 +69,10 @@
  * * This online tool [svg-path-editor](https://yqnn.github.io/svg-path-editor/) helped me create the SVG paths.
  *
  * [algorithm]: https://web.archive.org/web/20131025132021/http://kuoi.org/~kamikaze/GameDesign/art07_rogue_dungeon.php
+ *
+ * Author: Werner Stoop
+ * CC0 This work has been marked as dedicated to the public domain.
+ * https://creativecommons.org/publicdomain/zero/1.0/
  */
 
 #ifndef DUNGEON_H
