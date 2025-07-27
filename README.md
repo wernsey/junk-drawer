@@ -1,36 +1,19 @@
 # Junk Drawer
 
-Various utilities that I created over the years
+Various utilities that I created over the years, that may or may not
+be useful and that I have nowhere else to put them.
 
-## pocketmod
+## zine-maker
 
-A simple command-line program to generate [Pocketmod][] PDFs.
+A simple command-line program to generate [Zine][]s in the form of [Pocketmod][] PDFs.
 
 It takes 8 PNG or JPG files as arguments and lays them out on a single page
 in a PDF file for printing.
 
-```
-./modder -pg cover.png page1.png page2.png page3.png page4.png page5.png page6.png back.png
-```
+See the [README.md](zine-maker/README.md) in that directory.
 
-* `-o` Specifies the output file. The default is `pocketmod.pdf`
-* `-f` lay the page out as a [pocketfold][] instead.
-* `-m margin` specifies the margin around each image in its
-  panel (default 10)
-* `-g` add folding guides to the output PDF
-* `-p` add page numbers to the output PDF. `-pp` adds
-  page numbers to the front and back covers as well
-* `-T title` adds a title to the PDF metadata
-* `-A author` adds an author to the PDF metadata
-* `-C creator` adds a creator to the PDF metadata
-* `-S subject` adds a subject to the PDF metadata
-* `-K keywords` adds keywords to the PDF metadata
-
-PDFs are generated through [libharu][].
-
+[Zine]: https://en.wikipedia.org/wiki/Zine
 [Pocketmod]: https://pocketmod.com/
-[libharu]: https://github.com/libharu/libharu
-[pocketfold]: https://3skulls.itch.io/pocketfold
 
 ## screens
 
@@ -133,9 +116,8 @@ To play the music, drop the contents of the original
 [pocketmod/songs](https://github.com/rombankzero/pocketmod/tree/master/songs)
 directory into `fenster-pocketmod/songs`.
 
-The irony that there's another unrelated tool called **pocketmod**
-that has nothing to do with MOD music in this collection is not
-lost on me.
+The **zine-maker** directory in this repo deals with a completely different
+and unrelated concept that just so happens to also be called a "[Pocketmod][]".
 
 [rombankzero/pocketmod]: https://github.com/rombankzero/pocketmod
 

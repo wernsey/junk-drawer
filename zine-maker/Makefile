@@ -4,12 +4,12 @@ LDFLAGS= -lhpdf
 
 
 # Add your source files here:
-SOURCES=modder.c
+SOURCES=zine.c
 OBJECTS=$(SOURCES:.c=.o)
-EXECUTABLE=modder
+EXECUTABLE=zine
 ifeq ($(OS),Windows_NT)
 	EXECUTABLE := $(EXECUTABLE).exe
-else	
+else
 endif
 
 all: $(EXECUTABLE)
@@ -23,7 +23,7 @@ $(EXECUTABLE): $(OBJECTS)
 .c.o:
 	$(CC) $(CFLAGS) $< -o $@
 
-modder.o: modder.c
+zine.o: zine.c
 
 .PHONY : clean
 
